@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 # read data set
-data = pd.read_csv("data/2017.1.1 ~ 2019.1.31 的電力供需.csv")
+data = pd.read_csv("data/2017.1.1 ~ 2019.1.31 的電力供需.csv", encoding='utf-8')
 data = data[["日期","淨尖峰供電能力(MW)","尖峰負載(MW)","備轉容量(MW)","備轉容量率(%)"]]
 # remove error data
 data = data.reset_index()
@@ -22,7 +22,7 @@ linreg = LinearRegression()
 linreg.fit(X,y)
 
 # read support data
-pre_data = pd.read_csv("data/power_supply_predicted.csv")
+pre_data = pd.read_csv("data/power_supply_predicted.csv", encoding='utf-8')
 pre_data = pre_data.rename(index=str,columns={"日期(年/月/日)":"日期","預估淨尖峰供電能力(萬瓩)":"淨尖峰供電能力(MW)","預估瞬時尖峰負載(萬瓩)":"尖峰負載(MW)","預估尖峰備轉容量率(%)":"備轉容量率(%)","預估尖峰備轉容量(萬瓩)":"備轉容量(MW)"})
 # modify format
 for i in range(0, 7):
